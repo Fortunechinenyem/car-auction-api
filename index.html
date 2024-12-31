@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <button id="registerButton">Register User</button>
+
+    <script>
+      document
+        .getElementById("registerButton")
+        .addEventListener("click", () => {
+          fetch("http://localhost:3000/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: "Jane Doe",
+              email: "jane@example.com",
+              password: "securePassword123",
+              role: "buyer",
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+  </body>
+</html>
